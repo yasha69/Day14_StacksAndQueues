@@ -4,7 +4,6 @@ import com.bridgelabz.*;
 public class Queue {
     private Node front, rear;
     private int currentSize;
-
     public Queue() {
         this.front = null;
         this.rear = null;
@@ -24,13 +23,27 @@ public class Queue {
             oldRear.setNext(rear);
         }
         currentSize++;
-        System.out.println(data);
+        System.out.println(data + " added to the queue");
     }
+    public int dequeue() {
+        int data = front.getData();
+        front = front.getNext();
+        if (isEmpty()) {
+            rear = null;
+        }
+        currentSize--;
+        System.out.println(data + " removed from the queue");
+        return data;
+    }
+
     public static void main(String[] args) {
         Queue list = new Queue();
         System.out.println("Queue list: ");
         list.enqueue(56);
         list.enqueue(30);
         list.enqueue(70);
+        list.dequeue();
+        list.dequeue();
+        list.dequeue();
     }
 }
